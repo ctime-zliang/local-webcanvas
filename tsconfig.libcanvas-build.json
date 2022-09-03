@@ -21,6 +21,6 @@
 		"noEmit": false,
 		"baseUrl": "./"
 	},
-	"include": ["lib"],
+	"include": ["libsrc"],
 	"exclude": ["./config/**"]
 }

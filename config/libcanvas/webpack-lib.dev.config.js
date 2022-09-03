@@ -8,7 +8,7 @@ delete webpackLibInitConfig.module
 const webpackConfig = {
 	mode: 'development',
 	entry: {
-		main: utils.resolveDirectory(`./lib/libcanvas/main.ts`),
+		main: utils.resolveDirectory(`./libsrc/libcanvas/main.ts`),
 	},
 	output: {
 		path: utils.resolveDirectory(`./build/libcanvas`),

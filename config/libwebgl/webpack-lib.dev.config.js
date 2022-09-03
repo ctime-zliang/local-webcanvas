@@ -8,7 +8,7 @@ delete webpackLibInitConfig.module
 const webpackConfig = {
 	mode: 'development',
 	entry: {
-		main: utils.resolveDirectory(`./lib/libwebgl/main.ts`),
+		main: utils.resolveDirectory(`./libsrc/libwebgl/main.ts`),
 	},
 	output: {
 		path: utils.resolveDirectory(`./build/libwebgl`),

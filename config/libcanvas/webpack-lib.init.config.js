@@ -4,8 +4,6 @@ const { ESBuildPlugin } = require('esbuild-loader')
 const { DtsBundlePlugin } = require('../webpackPlugins/dts-bundle.plugin')
 const utils = require('../utils/utils')
 
-console.log(`process.cwd() ===`, process.cwd())
-
 const webpackLibInitConfig = {
 	target: 'web',
 	resolve: {

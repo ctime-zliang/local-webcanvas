@@ -20,10 +20,10 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./src/*"],
-			"@libcanvas/*": ["./lib/libcanvas/*"],
-			"@libwebgl/*": ["./lib/libwebgl/*"],
+			"@libcanvas/*": ["./libsrc/libcanvas/*"],
+			"@libwebgl/*": ["./libsrc/libwebgl/*"],
 			"@app/*": ["./src/app/*"]
 		}
 	},
-	"include": ["src", "lib/libcanvas", "lib/libwebgl"]
+	"include": ["src", "libsrc/libcanvas", "libsrc/libwebgl"]
 }
