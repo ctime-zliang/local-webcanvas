@@ -33,7 +33,7 @@ module.exports = {
 				})
 				fs.rmdirSync(directory)
 			} else {
-				throw new Error('exec deleteFolderRecursive error: path error.')
+				throw new Error(`exec deleteFolderRecursive error: path error: ${directory}`)
 			}
 		} catch (e) {
 			console.error(e)

@@ -19,7 +19,6 @@ const tsLoader = {
 	loader: 'ts-loader',
 	options: {
 		configFile: 'tsconfig.libcanvas-build.json',
-		// configFile: path.resolve(process.cwd(), './tsconfig.libcanvas-build.json')
 	},
 }
 
