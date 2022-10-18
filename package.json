@@ -1,8 +1,9 @@
 {
-	"name": "react-initbase",
+	"name": "local-webcanvas",
 	"version": "1.0.0",
 	"description": "React Application",
 	"scripts": {
+		"preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions",
 		"prepare": "husky install",
 		"husky:install": "husky install",
 		"prettier:write-all": "prettier --write .",
@@ -104,5 +105,9 @@
 		"webpack-cli": "^4.7.2",
 		"webpack-dev-server": "^3.11.2",
 		"webpack-merge": "^5.8.0"
+	},
+	"resolutions": {
+		"@types/react": "^17.0.35",
+		"@types/react-dom": "^17.0.11"
 	}
 }
