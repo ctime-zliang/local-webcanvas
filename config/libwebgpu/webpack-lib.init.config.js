@@ -14,11 +14,11 @@ const webpackLibInitConfig = {
 		new ESBuildPlugin(),
 		new webpack.ProgressPlugin(),
 		new DtsBundlePlugin({
-			name: `libwebgl`,
+			name: `libwebgpu`,
 			/* ... */
-			rootPath: path.join(process.cwd(), `./build/libwebgl/@types`),
-			entry: './libwebgl/main.d.ts',
-			output: '../libwebgl.d.ts',
+			rootPath: path.join(process.cwd(), `./build/libwebgpu/@types`),
+			entry: './libwebgpu/main.d.ts',
+			output: '../libwebgpu.d.ts',
 		}),
 	],
 }

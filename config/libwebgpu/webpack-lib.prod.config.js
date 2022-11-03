@@ -6,20 +6,20 @@ const utils = require('../utils/utils')
 const webpackInitModule = webpackLibInitConfig.module
 delete webpackLibInitConfig.module
 const webpackConfig = {
-	mode: 'development',
+	mode: 'production',
 	entry: {
-		main: utils.resolveDirectory(`./libsrc/libwebgl/main.ts`),
+		main: utils.resolveDirectory(`./libsrc/libwebgpu/main.ts`),
 	},
 	output: {
-		path: utils.resolveDirectory(`./build/libwebgl`),
-		filename: `libwebgl.js`,
+		path: utils.resolveDirectory(`./build/libwebgpu`),
+		filename: `libwebgpu.js`,
 		libraryExport: 'default',
 		libraryTarget: 'umd',
 		globalObject: 'this',
 	},
 	module: {
 		...webpackInitModule,
-		rules: [rules('libDevBuild')],
+		rules: [rules('libProdBuild')],
 	},
 	devtool: 'source-map',
 }

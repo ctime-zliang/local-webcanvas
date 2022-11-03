@@ -9,7 +9,7 @@ const jsEsbuildLoader = {
 		target: 'es2015',
 		jsxFactory: 'React.createElement',
 		jsxFragment: 'React.Fragment',
-		tsconfigRaw: require('../../tsconfig.libwebgl-build.json'),
+		tsconfigRaw: require('../../tsconfig.libwebgpu-build.json'),
 	},
 }
 
@@ -18,7 +18,7 @@ const tsLoader = {
 	exclude: /node_modules/,
 	loader: 'ts-loader',
 	options: {
-		configFile: 'tsconfig.libwebgl-build.json',
+		configFile: 'tsconfig.libwebgpu-build.json',
 	},
 }
 

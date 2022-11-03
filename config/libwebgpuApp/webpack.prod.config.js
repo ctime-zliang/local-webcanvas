@@ -8,7 +8,7 @@ const webpackDevServerConfig = require('../common/webpack.dev-server.config')
 const webpackDevConfig = {
 	mode: `production`,
 	output: {
-		path: utils.resolveDirectory(`./dist/libwebglApp/prod`),
+		path: utils.resolveDirectory(`./dist/libwebgpuApp/prod`),
 		filename: `scripts/build.[name].[hash:8].js`,
 		chunkFilename: `scripts/chunks.[name].[chunkhash:8].js`,
 	},
@@ -16,7 +16,7 @@ const webpackDevConfig = {
 	plugins: [
 		...webpackPlugins({
 			mode: `production`,
-			templateSrc: `./src/libwebglApp/template/index.ejs`,
+			templateSrc: `./src/libwebgpuApp/template/index.ejs`,
 			buildIndexHtmlTitle: `Canvas App`,
 		}),
 	],

@@ -17,7 +17,7 @@
 		"isolatedModules": true,
 		"resolveJsonModule": true,
 		"declaration": true,
-		"declarationDir": "./build/libwebgl/@types",
+		"declarationDir": "./build/libwebgpu/@types",
 		"noEmit": false,
 		"baseUrl": "./"
 	},

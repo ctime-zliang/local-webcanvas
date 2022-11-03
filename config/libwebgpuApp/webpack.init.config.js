@@ -11,7 +11,7 @@ const webpackBaseConfig = {
 		type: `filesystem`,
 	},
 	entry: {
-		main: utils.resolveDirectory(`./src/libwebglApp/index.tsx`),
+		main: utils.resolveDirectory(`./src/libwebgpuApp/index.tsx`),
 	},
 	module: {
 		rules: webpackRules(),
@@ -19,7 +19,7 @@ const webpackBaseConfig = {
 	resolve: {
 		alias: {
 			'@': path.resolve('./src/'),
-			'@libwebgl': path.resolve('./libsrc/libwebgl/'),
+			'@libwebgpu': path.resolve('./libsrc/libwebgpu/'),
 		},
 		extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', 'vue'],
 		enforceExtension: false,

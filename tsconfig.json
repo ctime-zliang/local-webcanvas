@@ -21,8 +21,8 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@libcanvas/*": ["./libsrc/libcanvas/*"],
-			"@libwebgl/*": ["./libsrc/libwebgl/*"]
+			"@libwebgpu/*": ["libsrc/libwebgpu/*"]
 		}
 	},
-	"include": ["src", "libsrc/libcanvas", "libsrc/libwebgl"]
+	"include": ["src", "libsrc/libcanvas", "libsrc/libwebgpu"]
 }

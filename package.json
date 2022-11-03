@@ -13,12 +13,12 @@
 		"tsc:check": "tsc --noEmit",
 		"libcanvas:dev": "cross-env NODE_ENV=development webpack --watch --progress --config ./config/libcanvas/webpack-lib.dev.config.js",
 		"libcanvas:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libcanvas/webpack-lib.prod.config.js",
-		"libwebgl:dev": "cross-env NODE_ENV=development webpack --watch --progress --config ./config/libwebgl/webpack-lib.dev.config.js",
-		"libwebgl:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libwebgl/webpack-lib.prod.config.js",
+		"libwebgpu:dev": "cross-env NODE_ENV=development webpack --watch --progress --config ./config/libwebgpu/webpack-lib.dev.config.js",
+		"libwebgpu:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libwebgpu/webpack-lib.prod.config.js",
 		"libcanvasApp:dev": "cross-env NODE_ENV=development webpack server --progress --config ./config/libcanvasApp/webpack.dev.config.js",
 		"libcanvasApp:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libcanvasApp/webpack.prod.config.js",
-		"libwebglApp:dev": "cross-env NODE_ENV=development webpack server --progress --config ./config/libwebglApp/webpack.dev.config.js",
-		"libwebglApp:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libwebglApp/webpack.prod.config.js"
+		"libwebgpuApp:dev": "cross-env NODE_ENV=development webpack server --progress --config ./config/libwebgpuApp/webpack.dev.config.js",
+		"libwebgpuApp:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libwebgpuApp/webpack.prod.config.js"
 	},
 	"author": "",
 	"license": "ISC",
