@@ -8,7 +8,7 @@ export default function App(props: TCommonComponentBaseProps): React.ReactElemen
 	const __app_id__: number = Math.random()
 	return (
 		<section data-tagitem="React-App-Section" className="react-app-section">
-			React WebGL Application
+			React WebGPU Application
 		</section>
 	)
 }
