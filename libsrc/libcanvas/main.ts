@@ -1,3 +1,4 @@
-export const LIB_WECANVAS = {
-	version: '1.0.1',
-}
+import { initCanvasElement } from './utils/initCanvasElement'
+import { Frame } from './views/Frame'
+
+const frame: Frame = new Frame(initCanvasElement('drawCanvas', document.body))
