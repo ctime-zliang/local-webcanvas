@@ -1,7 +1,7 @@
 import { BBox, TBBoxJSONResult } from '../tool/BBox'
 
 export type ShapeBaseJSONResult = {
-	bbox: TBBoxJSONResult,
+	bbox: TBBoxJSONResult
 	centerX: number
 	centerY: number
 }
@@ -24,7 +24,7 @@ export class ShapeBase {
 		return {
 			bbox: this._bbox.toJSON(),
 			centerX: this._centerX,
-			centerY: this._centerY
+			centerY: this._centerY,
 		}
 	}
 }
