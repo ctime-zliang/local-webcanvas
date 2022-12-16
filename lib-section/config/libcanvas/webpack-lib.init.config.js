@@ -14,11 +14,11 @@ const webpackLibInitConfig = {
 		new ESBuildPlugin(),
 		new webpack.ProgressPlugin(),
 		new DtsBundlePlugin({
-			name: `libwebgpu`,
+			name: `libcanvas`,
 			/* ... */
-			rootPath: path.join(process.cwd(), `./build/libwebgpu/@types`),
-			entry: './libwebgpu/main.d.ts',
-			output: '../libwebgpu.d.ts',
+			rootPath: path.join(process.cwd(), `./dist/libcanvas/@types`),
+			entry: './index.d.ts',
+			output: '../libcanvas.d.ts',
 		}),
 	],
 }

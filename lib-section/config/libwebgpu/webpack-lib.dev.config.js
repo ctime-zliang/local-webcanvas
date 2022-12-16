@@ -8,10 +8,10 @@ delete webpackLibInitConfig.module
 const webpackConfig = {
 	mode: 'development',
 	entry: {
-		main: utils.resolveDirectory(`./libsrc/libwebgpu/main.ts`),
+		main: utils.resolveDirectory(`./src-webgpu/main.ts`),
 	},
 	output: {
-		path: utils.resolveDirectory(`./build/libwebgpu`),
+		path: utils.resolveDirectory(`./dist/libwebgpu`),
 		filename: `libwebgpu.js`,
 		libraryExport: 'default',
 		libraryTarget: 'umd',

@@ -17,10 +17,13 @@
 		"isolatedModules": true,
 		"resolveJsonModule": true,
 		"declaration": true,
-		"declarationDir": "./build/libwebgpu/@types",
+		"declarationDir": "./dist/libwebgpu/@types",
 		"noEmit": false,
-		"baseUrl": "./"
+		"baseUrl": "./",
+		"paths": {
+			"@libwebgpu/*": ["./src-webgpu/*"]
+		}
 	},
-	"include": ["libsrc"],
+	"include": ["./src-webgpu"],
 	"exclude": ["./config/**"]
 }

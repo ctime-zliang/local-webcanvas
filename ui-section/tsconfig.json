@@ -5,7 +5,7 @@
 		"types": ["node"],
 		"lib": ["dom", "dom.iterable", "es2015"],
 		"jsx": "react",
-		"allowJs": false,
+		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
@@ -16,11 +16,11 @@
 		"module": "commonjs",
 		"isolatedModules": true,
 		"resolveJsonModule": true,
-		"declaration": true,
-		"declarationDir": "./build/libcanvas/@types",
-		"noEmit": false,
-		"baseUrl": "./"
+		"noEmit": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
-	"include": ["libsrc"],
-	"exclude": ["./config/**"]
+	"include": ["src"]
 }

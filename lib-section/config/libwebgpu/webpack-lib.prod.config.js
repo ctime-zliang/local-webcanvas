@@ -8,11 +8,11 @@ delete webpackLibInitConfig.module
 const webpackConfig = {
 	mode: 'production',
 	entry: {
-		main: utils.resolveDirectory(`./libsrc/libcanvas/main.ts`),
+		main: utils.resolveDirectory(`./src-webgpu/main.ts`),
 	},
 	output: {
-		path: utils.resolveDirectory(`./build/libcanvas`),
-		filename: `libcanvas.js`,
+		path: utils.resolveDirectory(`./dist/libwebgpu`),
+		filename: `libwebgpu.js`,
 		libraryExport: 'default',
 		libraryTarget: 'umd',
 		globalObject: 'this',
