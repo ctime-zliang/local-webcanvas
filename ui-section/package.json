@@ -11,8 +11,8 @@
 		"eslint:check-src": "eslint --ext .js,.ts,.jsx,.tsx src",
 		"eslint:fix-src": "eslint --fix --ext .js,.ts,.jsx,.tsx src",
 		"tsc:check": "tsc --noEmit",
-		"libcanvasApp:dev": "cross-env NODE_ENV=development webpack server --progress --config ./config/libcanvasApp/webpack.dev.config.js",
-		"libcanvasApp:prod": "cross-env NODE_ENV=production webpack --progress --config ./config/libcanvasApp/webpack.prod.config.js"
+		"libcanvasApp:dev": "cross-env NODE_ENV=development webpack --watch --progress --config ./config/libcanvasApp/webpack.dev.config.js",
+		"libcanvasApp:prod": "cross-env NODE_ENV=production webpack --watch --progress --config ./config/libcanvasApp/webpack.prod.config.js"
 	},
 	"author": "",
 	"license": "ISC",
