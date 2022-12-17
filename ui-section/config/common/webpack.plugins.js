@@ -1,3 +1,4 @@
+const path = require('path')
 const utils = require('../utils/utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
@@ -9,12 +10,12 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const webpack = require('webpack')
 const chalk = require('chalk')
 
-module.exports = ({ mode, templateSrc, buildIndexHtmlTitle }) => {
+module.exports = ({ mode, htmlTemplateSrc, htmlTemplateOutputFilename, buildIndexHtmlTitle }) => {
 	const plugins = [
 		new HtmlWebpackPlugin({
 			title: buildIndexHtmlTitle,
-			filename: `./index.html`,
-			template: templateSrc,
+			filename: htmlTemplateOutputFilename,
+			template: htmlTemplateSrc,
 			inject: true,
 			hash: false,
 			cache: true,

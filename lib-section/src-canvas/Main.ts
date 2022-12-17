@@ -12,3 +12,5 @@ export class WebCanvas {
 		return this._frame
 	}
 }
+
+console.log(WebCanvas)

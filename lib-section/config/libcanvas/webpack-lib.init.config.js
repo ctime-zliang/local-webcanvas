@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-const { ESBuildPlugin } = require('esbuild-loader')
-const { DtsBundlePlugin } = require('../webpackPlugins/dts-bundle.plugin')
+const webpackStats = require('../common/webpack.stats')
+const webpackOptimization = require('../common/webpack.optimization')
 const utils = require('../utils/utils')
 
 const webpackLibInitConfig = {
@@ -9,18 +9,24 @@ const webpackLibInitConfig = {
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx', '.jsx'],
 	},
+	entry: {
+		main: utils.resolveDirectory(`./src-canvas/main.ts`),
+	},
 	module: {},
-	plugins: [
-		new ESBuildPlugin(),
-		new webpack.ProgressPlugin(),
-		new DtsBundlePlugin({
-			name: `libcanvas`,
-			/* ... */
-			rootPath: path.join(process.cwd(), `./dist/libcanvas/@types`),
-			entry: './index.d.ts',
-			output: '../libcanvas.d.ts',
-		}),
-	],
+	resolve: {
+		alias: {
+			'@': path.resolve('./src/'),
+		},
+		extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', 'vue'],
+		enforceExtension: false,
+	},
+	performance: {
+		hints: `warning`,
+		maxAssetSize: 40000000,
+		maxEntrypointSize: 60000000,
+	},
+	optimization: webpackOptimization(),
+	stats: webpackStats(),
 }
 
 module.exports = webpackLibInitConfig

@@ -16,7 +16,8 @@ const webpackDevConfig = {
 	plugins: [
 		...webpackPlugins({
 			mode: `development`,
-			templateSrc: `./src/libcanvasApp/template/index.ejs`,
+			htmlTemplateSrc: `./src/libcanvasApp/template/index.ejs`,
+			htmlTemplateOutputFilename: `./index.html`,
 			buildIndexHtmlTitle: `Canvas App`,
 		}),
 	],
