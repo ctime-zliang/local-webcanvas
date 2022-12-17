@@ -23,13 +23,13 @@ module.exports = ({ mode, htmlTemplateSrc, htmlTemplateOutputFilename, buildInde
 		}),
 		new ESBuildPlugin(),
 		new webpack.ProgressPlugin(),
-		new DtsBundlePlugin({
-			name: `libcanvas`,
-			/* ... */
-			rootPath: path.join(process.cwd(), `./dist/libcanvas/@types`),
-			entry: './index.d.ts',
-			output: '../script/libcanvas.d.ts',
-		}),
+		// new DtsBundlePlugin({
+		// 	name: `libcanvas`,
+		// 	/* ... */
+		// 	rootPath: path.join(process.cwd(), `./dist/libcanvas/@types`),
+		// 	entry: './index.d.ts',
+		// 	output: '../script/libcanvas.d.ts',
+		// }),
 	]
 	if (mode === 'production') {
 		plugins.push(

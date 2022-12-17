@@ -9,6 +9,7 @@ const webpackDevConfig = {
 	mode: `production`,
 	output: {
 		path: utils.resolveDirectory(`./dist/libcanvasApp/prod`),
+		// publicPath: './',
 		filename: `scripts/build.[name].[hash:8].js`,
 		chunkFilename: `scripts/chunks.[name].[chunkhash:8].js`,
 	},
