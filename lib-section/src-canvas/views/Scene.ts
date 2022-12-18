@@ -1,16 +1,21 @@
+import { globalIdenManager } from '../Constant'
+
 export class Scene {
+	private _sceneId: string
 	private _versn: string
 	private _ctx: CanvasRenderingContext2D
 	constructor() {
 		this._versn = '1.0.1'
+		this._sceneId = globalIdenManager.getUuIden()
 		this._ctx = null as any
 	}
 
 	public get versn(): string {
 		return this._versn
 	}
-	public set versn(value: string) {
-		this._versn = value
+
+	public get sceneId(): string {
+		return this._sceneId
 	}
 
 	public get ctx(): CanvasRenderingContext2D {

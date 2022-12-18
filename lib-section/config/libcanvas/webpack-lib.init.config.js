@@ -10,7 +10,7 @@ const webpackLibInitConfig = {
 		extensions: ['.js', '.ts', '.tsx', '.jsx'],
 	},
 	entry: {
-		main: utils.resolveDirectory(`./src-canvas/main.ts`),
+		main: utils.resolveDirectory(`./src-canvas/index.ts`),
 	},
 	module: {},
 	resolve: {
@@ -20,13 +20,13 @@ const webpackLibInitConfig = {
 		extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', 'vue'],
 		enforceExtension: false,
 	},
-	performance: {
-		hints: `warning`,
-		maxAssetSize: 40000000,
-		maxEntrypointSize: 60000000,
-	},
-	optimization: webpackOptimization(),
-	stats: webpackStats(),
+	// performance: {
+	// 	hints: `warning`,
+	// 	maxAssetSize: 40000000,
+	// 	maxEntrypointSize: 60000000,
+	// },
+	// optimization: webpackOptimization(),
+	// stats: webpackStats(),
 }
 
 module.exports = webpackLibInitConfig
