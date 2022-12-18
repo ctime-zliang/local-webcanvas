@@ -6,7 +6,7 @@ module.exports = api => {
 
 	return {
 		// babelrcRoots: ['.'],
-		presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+		presets: ['@babel/preset-env', '@babel/preset-typescript'],
 		plugins: [
 			[
 				'@babel/plugin-proposal-decorators',
@@ -21,27 +21,10 @@ module.exports = api => {
 			'@babel/plugin-transform-runtime',
 			'@babel/plugin-transform-modules-commonjs',
 			'@babel/plugin-transform-arrow-functions',
-			[
-				'import',
-				{
-					libraryName: 'antd',
-					style: isTargetWeb ? true : 'less',
-				},
-			],
 		].filter(Boolean),
 		env: {
 			test: {
-				plugins: [
-					'@babel/plugin-transform-modules-commonjs',
-					'dynamic-import-node',
-					[
-						'import',
-						{
-							libraryName: 'antd',
-							style: isTargetWeb ? true : 'less',
-						},
-					],
-				],
+				plugins: ['@babel/plugin-transform-modules-commonjs', 'dynamic-import-node'],
 			},
 		},
 	}
