@@ -50,7 +50,28 @@ module.exports = async function (ctx, next, buildMode) {
 		return
 	}
 	const assetsPath = requestUrl.substring(matchedRouter.length, requestUrl.length)
+	const fileType = assetsPath.split('.').pop().toLowerCase()
 	const fileContent = fs.readFileSync(path.join(rootPath, buildPath, assetsPath), 'utf-8')
+	switch (fileType) {
+		case 'css': {
+			ctx.response.set({
+				'Content-Type': `text/css`,
+			})
+			break
+		}
+		case 'js': {
+			ctx.response.set({
+				'Content-Type': `application/javascript`,
+			})
+			break
+		}
+		case 'json': {
+			ctx.response.set({
+				'Content-Type': `application/json`,
+			})
+			break
+		}
+	}
 	ctx.body = fileContent
 	await next()
 }

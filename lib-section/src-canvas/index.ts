@@ -1,18 +1,19 @@
-import { WebCanvas as _WebCanvas } from './Main'
+import { WebCanvas } from './Main'
+import { initCanvasElement } from './utils/initCanvasElement'
 
-const WebCanvas = _WebCanvas
-export type WebCanvas = _WebCanvas
-export default WebCanvas
+function main(): void {
+	const canvasElement: HTMLCanvasElement = initCanvasElement('canvas', document.body)
+	WebCanvas.init(canvasElement)
+}
+function initEvent(): void {
+	window.addEventListener('resize', (): void => {
+		const canvasElement = WebCanvas.getCanvasElement()
+		canvasElement.width = document.documentElement.clientWidth
+		canvasElement.height = document.documentElement.clientHeight
+	})
+}
 
-/**
- * test
- */
-const canvasElement: HTMLCanvasElement = document.createElement('canvas')
-canvasElement.width = 500
-canvasElement.height = 300
-canvasElement.id = String(Math.random())
-document.getElementById('app')?.appendChild(canvasElement)
-const webCanvas: WebCanvas = new WebCanvas(canvasElement)
-webCanvas.frame.render()
-console.log(webCanvas)
-console.log(canvasElement)
+window.addEventListener('DOMContentLoaded', (): void => {
+	main()
+	initEvent()
+})

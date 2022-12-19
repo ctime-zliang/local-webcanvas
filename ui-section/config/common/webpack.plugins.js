@@ -36,9 +36,9 @@ module.exports = ({ mode, htmlTemplateSrc, htmlTemplateOutputFilename, buildInde
 		// new ESLintPlugin({
 		// 	extensions: ['js', 'ts', 'jsx', 'tsx', 'vue'],
 		// }),
-		new progressBarWebpackPlugin({
-			format: `:msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
-		}),
+		// new progressBarWebpackPlugin({
+		// 	format: `:msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
+		// }),
 		new webpack.HotModuleReplacementPlugin(),
 		new ReactRefreshWebpackPlugin(),
 	]

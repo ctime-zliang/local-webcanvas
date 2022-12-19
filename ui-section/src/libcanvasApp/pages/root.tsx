@@ -8,13 +8,15 @@ function Root(props: TCommonComponentBaseProps): React.ReactElement {
 		if (iframeWrapperElementRef.current) {
 			const iframeElement: HTMLIFrameElement = document.createElement('iframe')
 			iframeElement.src = '/canvas'
+			iframeElement.style.width = '100%'
+			iframeElement.style.height = '100%'
+			iframeElement.style.border = '0'
 			iframeWrapperElementRef.current.appendChild(iframeElement)
 		}
 	}, [])
 	return (
 		<>
-			<div>Canvas Draw Editor</div>
-			<div ref={iframeWrapperElementRef}></div>
+			<div ref={iframeWrapperElementRef} style={{ width: '100vw', height: '100vh' }}></div>
 		</>
 	)
 }

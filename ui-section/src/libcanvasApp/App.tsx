@@ -1,4 +1,5 @@
 import React from 'react'
+import '../common/assets/style/prefix.less'
 import '../../node_modules/antd/dist/antd.css'
 import Root from './pages/root'
 import { TCommonComponentBaseProps } from './types/comm.types'

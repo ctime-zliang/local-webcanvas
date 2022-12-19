@@ -1,14 +1,14 @@
 import { Frame } from './views/Frame'
-
 export class WebCanvas {
-	private _frame: Frame
-	private _canvasElement: HTMLCanvasElement
-	constructor(canvasElement: HTMLCanvasElement) {
-		this._canvasElement = canvasElement
-		this._frame = new Frame(this._canvasElement)
+	private static iframe: Frame
+	private static canvasElement: HTMLCanvasElement
+
+	public static init(canvasElement: HTMLCanvasElement): void {
+		this.canvasElement = canvasElement
+		this.iframe = new Frame(canvasElement)
 	}
 
-	public get frame(): Frame {
-		return this._frame
+	public static getCanvasElement(): HTMLCanvasElement {
+		return this.canvasElement
 	}
 }
