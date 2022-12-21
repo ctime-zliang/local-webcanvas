@@ -8,8 +8,9 @@ export class WebCanvas {
 	public static init(canvasElement: HTMLCanvasElement): void {
 		this._canvasElement = canvasElement
 		this._iframe = new Frame(canvasElement)
-		this._control = new Control()
+		this._control = new Control(canvasElement)
 		this._control.inputInfo.updateCanvasRectSize(canvasElement.width, canvasElement.height)
+		this._control.initial()
 	}
 
 	public static getCanvasElement(): HTMLCanvasElement {
