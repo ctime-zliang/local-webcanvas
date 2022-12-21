@@ -9,6 +9,7 @@ export function initCanvasElement(dataTagName: string, containerElement: HTMLEle
 	canvasElement = document.createElement('canvas')
 	canvasElement.width = containerClientRect.width
 	canvasElement.height = containerClientRect.height
+	canvasElement.style.position = 'absolute'
 	canvasElement.setAttribute('data-tagitem', dataTagName)
 	containerElement.appendChild(canvasElement)
 	return canvasElement

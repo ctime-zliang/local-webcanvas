@@ -5,7 +5,6 @@ export class Frame extends Scene {
 	private _canvasFrameId: string
 	private _isActive: boolean
 	private _canvasElement: HTMLCanvasElement
-
 	constructor(canvasElement: HTMLCanvasElement) {
 		super()
 		this._canvasElement = canvasElement
