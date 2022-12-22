@@ -1,3 +1,5 @@
+import { getUuid } from '../utils/getUuid'
+
 const INIT_IDEN_NUMBER: number = 1
 export class GlobalIdenManager {
 	private _elementIden: number
@@ -11,7 +13,7 @@ export class GlobalIdenManager {
 		return this._prefix + this._elementIden++
 	}
 
-	public getUuIden(): string {
-		return String(Math.random())
+	public getUuIden(length: number = 36): string {
+		return getUuid(length)
 	}
 }

@@ -6,7 +6,7 @@ export class FreeLineShape extends ShapeBase {
 	private _smooth: boolean
 	private _lineWidth: number
 	constructor(x: number, y: number) {
-		super(0, 0)
+		super(x, y)
 		this._path = [{ x, y }]
 		this._smooth = false
 		this._lineWidth = 10

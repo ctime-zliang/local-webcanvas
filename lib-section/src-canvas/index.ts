@@ -1,12 +1,14 @@
 import { WebCanvas } from './Main'
 import { initCanvasElement } from './utils/initCanvasElement'
 
+let webCanvas: WebCanvas = undefined as unknown as WebCanvas
+
 function main(): void {
 	const canvasElement: HTMLCanvasElement = initCanvasElement('canvas', document.body)
-	WebCanvas.init(canvasElement)
+	webCanvas = new WebCanvas(canvasElement)
 }
 function handleCanvasElementResize(e?: Event): void {
-	const canvasElement = WebCanvas.getCanvasElement()
+	const canvasElement = webCanvas.canvasElement
 	canvasElement.width = document.documentElement.clientWidth
 	canvasElement.height = document.documentElement.clientHeight
 }
@@ -18,5 +20,7 @@ window.addEventListener('DOMContentLoaded', (): void => {
 	main()
 	handleCanvasElementResize()
 	initEvent()
-	;(window as any).WebCanvas = WebCanvas
+
+	webCanvas.addLayer()
+	console.log(webCanvas)
 })
