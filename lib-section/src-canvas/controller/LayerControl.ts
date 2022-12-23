@@ -40,5 +40,6 @@ export class LayerControl {
 			return
 		}
 		groupLayerItem.childLayers.add(layerItem)
+		layerItem.groupId = groupLayerItem.layerId
 	}
 }
