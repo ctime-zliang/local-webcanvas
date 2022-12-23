@@ -1,12 +1,13 @@
 import { GroupLayer } from '../shapes/GroupLayer'
+import { LayerModel } from './LayerModel'
 
 export class GroupLayerModel {
 	private _layerId: string
-	private _childLayerIds: Array<string>
+	private _childLayers: Set<LayerModel>
 	private _element: GroupLayer
 	constructor(layerId: string, layerName: string) {
 		this._layerId = layerId
-		this._childLayerIds = []
+		this._childLayers = new Set()
 		this._element = new GroupLayer(layerName)
 	}
 
@@ -17,11 +18,11 @@ export class GroupLayerModel {
 		this._layerId = value
 	}
 
-	public get childLayerIds(): Array<string> {
-		return this._childLayerIds
+	public get childLayers(): Set<LayerModel> {
+		return this._childLayers
 	}
-	public set childLayerIds(value: Array<string>) {
-		this._childLayerIds = value
+	public set childLayers(value: Set<LayerModel>) {
+		this._childLayers = value
 	}
 
 	public get element(): GroupLayer {

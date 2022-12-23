@@ -1,9 +1,9 @@
 import { Control } from './tool/Control'
 import { Frame } from './views/Frame'
 import { selectControl, layerControl } from './Constant'
-import { Layer } from './shapes/Layer'
 import { LayerModel } from './models/LayerModel'
 import { GroupLayerModel } from './models/GroupLayerModel'
+import { TLayerModel } from './types/layer'
 export class WebCanvas {
 	private readonly _control: Control
 	private readonly _iframe: Frame
@@ -24,17 +24,23 @@ export class WebCanvas {
 		return this._canvasElement
 	}
 
-	public addLayer(layerName: string = 'Untitled Layer'): void {
-		const newLayerId: string = layerControl.addLayerItem(layerName)
-		selectControl.selectedLayersId = [newLayerId]
+	public createLayer(layerName: string = 'Untitled Layer'): LayerModel {
+		const newLayer: LayerModel = layerControl.createLayerItem(layerName)
+		selectControl.selectedLayersId = new Set([newLayer.layerId])
+		return newLayer
 	}
 
-	public addGroupLayer(layerName: string = 'Untitled Group-Layer'): void {
-		const newGroupLayerId: string = layerControl.addGroupLayerItem(layerName)
-		selectControl.selectedLayersId = [newGroupLayerId]
+	public createGroupLayer(layerName: string = 'Untitled Group-Layer'): GroupLayerModel {
+		const newGroupLayer: GroupLayerModel = layerControl.createGroupLayerItem(layerName)
+		selectControl.selectedLayersId = new Set([newGroupLayer.layerId])
+		return newGroupLayer
 	}
 
-	public getAllLayers(): Array<LayerModel | GroupLayerModel> {
+	public getAllLayers(): Array<TLayerModel> {
 		return layerControl.getAllLayers()
+	}
+
+	public moveLayerToGroupLayer(groupLayerId: string, childLayerId: string): void {
+		layerControl.moveLayerToGroupLayer(groupLayerId, childLayerId)
 	}
 }

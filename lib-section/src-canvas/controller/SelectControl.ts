@@ -1,22 +1,22 @@
 export class SelectControl {
-	private _selectedLayersId: Array<string>
-	private _selectedElements: Array<string>
+	private _selectedLayersId: Set<string>
+	private _selectedElements: Set<string>
 	constructor() {
-		this._selectedLayersId = []
-		this._selectedElements = []
+		this._selectedLayersId = new Set()
+		this._selectedElements = new Set()
 	}
 
-	public get selectedLayersId(): Array<string> {
+	public get selectedLayersId(): Set<string> {
 		return this._selectedLayersId
 	}
-	public set selectedLayersId(value: Array<string>) {
+	public set selectedLayersId(value: Set<string>) {
 		this._selectedLayersId = value
 	}
 
-	public get selectedElements(): Array<string> {
+	public get selectedElements(): Set<string> {
 		return this._selectedElements
 	}
-	public set selectedElements(value: Array<string>) {
+	public set selectedElements(value: Set<string>) {
 		this._selectedElements = value
 	}
 }

@@ -1,4 +1,6 @@
 import { WebCanvas } from './Main'
+import { GroupLayerModel } from './models/GroupLayerModel'
+import { LayerModel } from './models/LayerModel'
 import { initCanvasElement } from './utils/initCanvasElement'
 
 let webCanvas: WebCanvas = undefined as unknown as WebCanvas
@@ -21,9 +23,12 @@ window.addEventListener('DOMContentLoaded', (): void => {
 	handleCanvasElementResize()
 	initEvent()
 
-	webCanvas.addLayer()
-	webCanvas.addLayer()
-	webCanvas.addGroupLayer()
+	const layerA: LayerModel = webCanvas.createLayer()
+	const layerB: LayerModel = webCanvas.createLayer()
+	const layerC: LayerModel = webCanvas.createLayer()
+	const groupLayerA: GroupLayerModel = webCanvas.createGroupLayer()
+	webCanvas.moveLayerToGroupLayer(groupLayerA.layerId, layerB.layerId)
+	webCanvas.moveLayerToGroupLayer(groupLayerA.layerId, layerC.layerId)
 	console.log(webCanvas.getAllLayers())
 	console.log(webCanvas)
 })
