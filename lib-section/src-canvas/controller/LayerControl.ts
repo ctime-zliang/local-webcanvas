@@ -29,7 +29,7 @@ export class LayerControl {
 		return newGroupLayer
 	}
 
-	public moveLayerToGroupLayer(groupLayerId: string, childLayerId: string): void {
+	public moveLayerItemToGroupLayerItem(groupLayerId: string, childLayerId: string): void {
 		const groupLayerItem: GroupLayerModel = Array.from(this.layers).find((item: TLayerModel): boolean => {
 			return item.layerId === groupLayerId
 		}) as GroupLayerModel

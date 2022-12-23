@@ -24,13 +24,13 @@ export class WebCanvas {
 		return this._canvasElement
 	}
 
-	public createLayer(layerName: string = 'Untitled Layer'): LayerModel {
+	public createLayerItem(layerName: string = 'Untitled Layer'): LayerModel {
 		const newLayer: LayerModel = layerControl.createLayerItem(layerName)
 		selectControl.selectedLayersId = new Set([newLayer.layerId])
 		return newLayer
 	}
 
-	public createGroupLayer(layerName: string = 'Untitled Group-Layer'): GroupLayerModel {
+	public createGroupLayerItem(layerName: string = 'Untitled Group-Layer'): GroupLayerModel {
 		const newGroupLayer: GroupLayerModel = layerControl.createGroupLayerItem(layerName)
 		selectControl.selectedLayersId = new Set([newGroupLayer.layerId])
 		return newGroupLayer
@@ -40,7 +40,7 @@ export class WebCanvas {
 		return layerControl.getAllLayers()
 	}
 
-	public moveLayerToGroupLayer(groupLayerId: string, childLayerId: string): void {
-		layerControl.moveLayerToGroupLayer(groupLayerId, childLayerId)
+	public moveLayerItemToGroupLayerItem(groupLayerId: string, childLayerId: string): void {
+		layerControl.moveLayerItemToGroupLayerItem(groupLayerId, childLayerId)
 	}
 }
