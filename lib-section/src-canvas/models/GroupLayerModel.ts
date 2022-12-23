@@ -21,9 +21,6 @@ export class GroupLayerModel {
 	public get childLayers(): Set<LayerModel> {
 		return this._childLayers
 	}
-	public set childLayers(value: Set<LayerModel>) {
-		this._childLayers = value
-	}
 
 	public get element(): GroupLayer {
 		return this._element
