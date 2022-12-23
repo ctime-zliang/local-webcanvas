@@ -40,6 +40,5 @@ export class LayerControl {
 			return
 		}
 		groupLayerItem.childLayers.add(layerItem)
-		this.layers.delete(layerItem)
 	}
 }
