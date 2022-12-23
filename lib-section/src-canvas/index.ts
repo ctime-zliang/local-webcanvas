@@ -22,5 +22,8 @@ window.addEventListener('DOMContentLoaded', (): void => {
 	initEvent()
 
 	webCanvas.addLayer()
+	webCanvas.addLayer()
+	webCanvas.addGroupLayer()
+	console.log(webCanvas.getAllLayers())
 	console.log(webCanvas)
 })

@@ -1,19 +1,16 @@
-import { layerControl } from './Constant'
-import { LayerControl } from './controller/LayerControl'
-import { SelectControl } from './controller/SelectControl'
 import { Control } from './tool/Control'
 import { Frame } from './views/Frame'
+import { selectControl, layerControl } from './Constant'
+import { Layer } from './shapes/Layer'
+import { LayerModel } from './models/LayerModel'
+import { GroupLayerModel } from './models/GroupLayerModel'
 export class WebCanvas {
 	private readonly _control: Control
 	private readonly _iframe: Frame
-	private readonly _layerControl: LayerControl
 	private readonly _canvasElement: HTMLCanvasElement
-	private readonly _selectControl: SelectControl
 	constructor(canvasElement: HTMLCanvasElement) {
 		this._canvasElement = canvasElement
-		this._layerControl = layerControl
 		this._iframe = new Frame(canvasElement)
-		this._selectControl = new SelectControl()
 		this._control = new Control(canvasElement)
 		this._control.inputInfo.updateCanvasRectSize(canvasElement.width, canvasElement.height)
 		this._control.initial()
@@ -27,12 +24,17 @@ export class WebCanvas {
 		return this._canvasElement
 	}
 
-	public get selectControl(): SelectControl {
-		return this._selectControl
+	public addLayer(layerName: string = 'Untitled Layer'): void {
+		const newLayerId: string = layerControl.addLayerItem(layerName)
+		selectControl.selectedLayersId = [newLayerId]
 	}
 
-	public addLayer(layerName: string = 'Untitled Layer'): void {
-		const newLayerId: string = this._layerControl.addLayerItem(layerName)
-		this.selectControl.selectedLayersId = [newLayerId]
+	public addGroupLayer(layerName: string = 'Untitled Group-Layer'): void {
+		const newGroupLayerId: string = layerControl.addGroupLayerItem(layerName)
+		selectControl.selectedLayersId = [newGroupLayerId]
+	}
+
+	public getAllLayers(): Array<LayerModel | GroupLayerModel> {
+		return layerControl.getAllLayers()
 	}
 }

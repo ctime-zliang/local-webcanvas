@@ -1,4 +1,4 @@
-export class Layer {
+export class GroupLayer {
 	private _layerName: string
 	private _layerOpacity: number
 	constructor(layerName: string) {

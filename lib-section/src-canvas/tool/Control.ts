@@ -26,11 +26,11 @@ export class Control {
 	}
 
 	private keyDownHandler(e: KeyboardEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	private keyUpHandler(e: KeyboardEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	private mouseDownHandler(e: MouseEvent): void {
@@ -42,19 +42,19 @@ export class Control {
 	}
 
 	private mouseUpHandler(e: MouseEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	private mouseWheelHandler(e: MouseEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	private mouseLeaveHandler(e: MouseEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	private mouseEnterHandler(e: MouseEvent): void {
-		console.log(e)
+		// console.log(e)
 	}
 
 	public bindEvent(): void {
