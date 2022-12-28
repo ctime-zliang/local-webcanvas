@@ -1,3 +1,4 @@
+import { TDOMGetBoundingClientRectResult } from '../types/common'
 import { InputInfo } from './InputInfo'
 
 export class Control {
@@ -10,6 +11,7 @@ export class Control {
 
 	public initial(): void {
 		this.bindEvent()
+		this.viewResizeHandler()
 	}
 
 	public get inputInfo(): InputInfo {
@@ -22,27 +24,42 @@ export class Control {
 
 	private viewResizeHandler(): void {
 		const inputInfo: InputInfo = this.inputInfo
-		inputInfo.updateCanvasRectSize(this.canvasElement.width, this.canvasElement.height)
+		const canvasRect: TDOMGetBoundingClientRectResult = this.canvasElement.getBoundingClientRect().toJSON()
+		inputInfo.updateCanvasRectSize(this.canvasElement.width, this.canvasElement.height, canvasRect.left, canvasRect.top)
 	}
 
 	private keyDownHandler(e: KeyboardEvent): void {
-		// console.log(e)
+		this.inputInfo.ctrlKey = !!e.ctrlKey
+		this.inputInfo.altKey = !!e.altKey
+		this.inputInfo.shiftKey = !!e.shiftKey
+		this.inputInfo.metaKey = !!e.metaKey
 	}
 
 	private keyUpHandler(e: KeyboardEvent): void {
-		// console.log(e)
+		this.inputInfo.ctrlKey = !!e.ctrlKey
+		this.inputInfo.altKey = !!e.altKey
+		this.inputInfo.shiftKey = !!e.shiftKey
+		this.inputInfo.metaKey = !!e.metaKey
 	}
 
 	private mouseDownHandler(e: MouseEvent): void {
-		console.log(e)
+		this.inputInfo.mouseDownTimeStamp = e.timeStamp
+		this.inputInfo.leftMouseDown = e.button === 0
+		this.inputInfo.middleMouseDown = e.button === 1
+		this.inputInfo.rightMouseDown = e.button === 2
+		this.inputInfo.downX = this.inputInfo.leftMouseDown ? e.clientX : -1
+		this.inputInfo.downY = this.inputInfo.leftMouseDown ? e.clientY : -1
 	}
 
 	private mouseMoveHandler(e: MouseEvent): void {
-		// console.log(e)
+		this.inputInfo.mouseX = e.clientX
+		this.inputInfo.mouseY = e.clientY
 	}
 
 	private mouseUpHandler(e: MouseEvent): void {
-		// console.log(e)
+		this.inputInfo.leftMouseDown = e.button === 0
+		this.inputInfo.middleMouseDown = e.button === 1
+		this.inputInfo.rightMouseDown = e.button === 2
 	}
 
 	private mouseWheelHandler(e: MouseEvent): void {
@@ -60,13 +77,13 @@ export class Control {
 	public bindEvent(): void {
 		const canvasElement: HTMLCanvasElement = this.canvasElement
 		window.addEventListener('resize', this.viewResizeHandler.bind(this), false)
-		canvasElement.addEventListener('keydown', this.keyDownHandler, false)
-		canvasElement.addEventListener('keyup', this.keyUpHandler, false)
-		canvasElement.addEventListener('mousedown', this.mouseDownHandler, false)
-		canvasElement.addEventListener('mousemove', this.mouseMoveHandler, false)
-		canvasElement.addEventListener('mouseup', this.mouseUpHandler, false)
-		canvasElement.addEventListener('wheel', this.mouseWheelHandler, false)
-		canvasElement.addEventListener('mouseleave', this.mouseLeaveHandler, false)
-		canvasElement.addEventListener('mouseenter', this.mouseEnterHandler, false)
+		canvasElement.addEventListener('keydown', this.keyDownHandler.bind(this), false)
+		canvasElement.addEventListener('keyup', this.keyUpHandler.bind(this), false)
+		canvasElement.addEventListener('mousedown', this.mouseDownHandler.bind(this), false)
+		canvasElement.addEventListener('mousemove', this.mouseMoveHandler.bind(this), false)
+		canvasElement.addEventListener('mouseup', this.mouseUpHandler.bind(this), false)
+		canvasElement.addEventListener('wheel', this.mouseWheelHandler.bind(this), false)
+		canvasElement.addEventListener('mouseleave', this.mouseLeaveHandler.bind(this), false)
+		canvasElement.addEventListener('mouseenter', this.mouseEnterHandler.bind(this), false)
 	}
 }

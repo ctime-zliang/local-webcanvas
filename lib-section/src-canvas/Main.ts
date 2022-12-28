@@ -4,6 +4,7 @@ import { selectControl, layerControl } from './Constant'
 import { LayerModel } from './models/LayerModel'
 import { GroupLayerModel } from './models/GroupLayerModel'
 import { TLayerModel } from './types/layer'
+
 export class WebCanvas {
 	private readonly _control: Control
 	private readonly _iframe: Frame
@@ -12,7 +13,6 @@ export class WebCanvas {
 		this._canvasElement = canvasElement
 		this._iframe = new Frame(canvasElement)
 		this._control = new Control(canvasElement)
-		this._control.inputInfo.updateCanvasRectSize(canvasElement.width, canvasElement.height)
 		this._control.initial()
 	}
 

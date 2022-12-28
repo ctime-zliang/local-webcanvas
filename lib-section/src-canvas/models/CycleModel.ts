@@ -1,27 +1,12 @@
 import { CycleShape } from '../shapes/CycleShape'
 import { ShapeBase } from '../shapes/ShapeBase'
+import { ModelBase } from './ModelBase'
 
-export class CycleModel {
-	private _id: string
-	private _layerId: string
+export class CycleModel extends ModelBase {
 	private _element: CycleShape
-	constructor(layerId: string, x: number, y: number, r: number) {
-		this._layerId = layerId
+	constructor(id: string, layerId: string, x: number, y: number, r: number) {
+		super(id, layerId)
 		this._element = new CycleShape(x, y, r)
-	}
-
-	public get id(): string {
-		return this._id
-	}
-	public set id(value: string) {
-		this._id = value
-	}
-
-	public get layerId(): string {
-		return this._layerId
-	}
-	public set layerId(value: string) {
-		this._layerId = value
 	}
 
 	public get element(): ShapeBase {

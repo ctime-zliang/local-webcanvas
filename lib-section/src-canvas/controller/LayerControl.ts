@@ -41,5 +41,6 @@ export class LayerControl {
 		}
 		groupLayerItem.childLayers.add(layerItem)
 		layerItem.groupId = groupLayerItem.layerId
+		this.layers.delete(layerItem)
 	}
 }
