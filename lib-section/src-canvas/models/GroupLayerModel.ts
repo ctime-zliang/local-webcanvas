@@ -1,10 +1,10 @@
 import { GroupLayer } from '../shapes/GroupLayer'
-import { LayerModel } from './LayerModel'
+import { TLayerModel } from '../types/layer'
 
 export class GroupLayerModel {
 	private _groupId: string
 	private _layerId: string
-	private _childLayers: Set<LayerModel>
+	private _childLayers: Set<TLayerModel>
 	private _element: GroupLayer
 	constructor(layerId: string, layerName: string) {
 		this._groupId = undefined as any
@@ -27,8 +27,11 @@ export class GroupLayerModel {
 		this._layerId = value
 	}
 
-	public get childLayers(): Set<LayerModel> {
+	public get childLayers(): Set<TLayerModel> {
 		return this._childLayers
+	}
+	public set childLayers(value: Set<TLayerModel>) {
+		this._childLayers = value
 	}
 
 	public get element(): GroupLayer {

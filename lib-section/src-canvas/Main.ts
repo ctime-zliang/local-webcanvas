@@ -36,11 +36,19 @@ export class WebCanvas {
 		return newGroupLayer
 	}
 
-	public getAllLayers(): Array<TLayerModel> {
-		return layerControl.getAllLayers()
+	public getAllLayers(groupId?: string): Array<TLayerModel> {
+		return layerControl.getAllLayers(groupId)
 	}
 
-	public moveLayerItemToGroupLayerItem(groupLayerId: string, childLayerId: string): void {
-		layerControl.moveLayerItemToGroupLayerItem(groupLayerId, childLayerId)
+	public getAllViewLayers(): Array<TLayerModel> {
+		return layerControl.getAllViewLayers()
+	}
+
+	public deleteLayerItem(layerId: string): void {
+		layerControl.deleteLayerItem(layerId)
+	}
+
+	public moveLayerItem(layerId: string, groupLayerId?: string, upperLayerId?: string): void {
+		layerControl.moveLayerItem(layerId, groupLayerId, upperLayerId)
 	}
 }
