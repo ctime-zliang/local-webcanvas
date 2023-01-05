@@ -62,7 +62,7 @@ export class LayerControl {
 		const fromGroupLayerId: string = layerItem.groupId
 		if (!fromGroupLayerId) {
 			if (layerItem instanceof GroupLayerModel) {
-				layerItem.childLayers.forEach((item: TLayerModel) => {
+				layerItem.childLayers.forEach((item: TLayerModel): void => {
 					this.deleteLayerItem(item.layerId)
 				})
 				this.cacheLayers.delete(layerItem)
@@ -77,7 +77,7 @@ export class LayerControl {
 			return item.layerId === fromGroupLayerId
 		}) as GroupLayerModel
 		if (layerItem instanceof GroupLayerModel) {
-			layerItem.childLayers.forEach((item: TLayerModel) => {
+			layerItem.childLayers.forEach((item: TLayerModel): void => {
 				this.deleteLayerItem(item.layerId)
 			})
 			groupLayerItem.childLayers.delete(layerItem)
