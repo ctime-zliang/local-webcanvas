@@ -59,7 +59,7 @@ export class LayerControl {
 		const layerItem: TLayerModel = allLayers.find((item: TLayerModel): boolean => {
 			return item.layerId === layerId
 		}) as TLayerModel
-		const fromGroupLayerId: string = layerItem.groupId
+		const fromGroupLayerId: string = layerItem.groupId as string
 		if (!fromGroupLayerId) {
 			if (layerItem instanceof GroupLayerModel) {
 				layerItem.childLayers.forEach((item: TLayerModel): void => {
@@ -95,11 +95,11 @@ export class LayerControl {
 		const layerItem: LayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
 			return item.layerId === layerId
 		}) as LayerModel
-		const fromGroupLayerId: string = layerItem.groupId
+		const fromGroupLayerId: string = layerItem.groupId as string
 		if (!fromGroupLayerId) {
 			this.viewLayers.delete(layerItem)
 			if (!groupLayerId) {
-				layerItem.groupId = undefined as unknown as string
+				layerItem.groupId = undefined
 				if (!upperLayerId) {
 					this.viewLayers.add(layerItem)
 					return
@@ -135,7 +135,7 @@ export class LayerControl {
 		}) as GroupLayerModel
 		oldGroupLayerItem.childLayers.delete(layerItem)
 		if (!groupLayerId) {
-			layerItem.groupId = undefined as unknown as string
+			layerItem.groupId = undefined
 			if (!upperLayerId) {
 				this.viewLayers.add(layerItem)
 				return

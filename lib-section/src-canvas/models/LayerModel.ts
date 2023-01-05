@@ -1,7 +1,7 @@
 import { Layer } from '../shapes/Layer'
 
 export class LayerModel {
-	private _groupId: string
+	private _groupId: string | undefined
 	private _layerId: string
 	private _element: Layer
 	constructor(layerId: string, layerName: string) {
@@ -10,10 +10,10 @@ export class LayerModel {
 		this._element = new Layer(layerName)
 	}
 
-	public get groupId(): string {
+	public get groupId(): string | undefined {
 		return this._groupId
 	}
-	public set groupId(value: string) {
+	public set groupId(value: string | undefined) {
 		this._groupId = value
 	}
 
