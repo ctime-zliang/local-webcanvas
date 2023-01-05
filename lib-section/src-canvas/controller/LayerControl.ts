@@ -36,7 +36,14 @@ export class LayerControl {
 		return arrCacheLayers
 	}
 
-	public getAllViewLayers(): Array<TLayerModel> {
+	public getAllViewLayers(groupId?: string): Array<TLayerModel> {
+		const arrCacheLayers: Array<TLayerModel> = Array.from(this.cacheLayers)
+		if (groupId) {
+			const layerItem: GroupLayerModel = arrCacheLayers.find((item: TLayerModel): boolean => {
+				return item.layerId === groupId
+			}) as GroupLayerModel
+			return Array.from(layerItem.childLayers)
+		}
 		return Array.from(this.viewLayers)
 	}
 
@@ -89,9 +96,6 @@ export class LayerControl {
 	}
 
 	public moveLayerItem(layerId: string, groupLayerId?: string, upperLayerId?: string): void {
-		if (!groupLayerId && !upperLayerId) {
-			return
-		}
 		const layerItem: LayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
 			return item.layerId === layerId
 		}) as LayerModel
@@ -104,13 +108,13 @@ export class LayerControl {
 					this.viewLayers.add(layerItem)
 					return
 				}
-				const allLayers: Array<TLayerModel> = this.getAllLayers()
-				const upperLayerItemIndex: number = allLayers.findIndex((item: TLayerModel): boolean => {
+				const allViewLayers: Array<TLayerModel> = this.getAllViewLayers()
+				const upperLayerItemIndex: number = allViewLayers.findIndex((item: TLayerModel): boolean => {
 					return item.layerId === upperLayerId
 				})
 				const insertIndex: number = upperLayerItemIndex - 1 <= 0 ? 0 : upperLayerItemIndex - 1
-				allLayers.splice(insertIndex, 0, layerItem)
-				this.cacheLayers = new Set(allLayers)
+				allViewLayers.splice(insertIndex, 0, layerItem)
+				this.viewLayers = new Set(allViewLayers)
 				return
 			}
 			const groupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
@@ -131,7 +135,7 @@ export class LayerControl {
 			return
 		}
 		const oldGroupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
-			return item.layerId === groupLayerId
+			return item.layerId === fromGroupLayerId
 		}) as GroupLayerModel
 		oldGroupLayerItem.childLayers.delete(layerItem)
 		if (!groupLayerId) {
@@ -140,13 +144,13 @@ export class LayerControl {
 				this.viewLayers.add(layerItem)
 				return
 			}
-			const allLayers: Array<TLayerModel> = this.getAllLayers()
-			const upperLayerItemIndex: number = allLayers.findIndex((item: TLayerModel): boolean => {
+			const allViewLayers: Array<TLayerModel> = this.getAllViewLayers()
+			const upperLayerItemIndex: number = allViewLayers.findIndex((item: TLayerModel): boolean => {
 				return item.layerId === upperLayerId
 			})
 			const insertIndex: number = upperLayerItemIndex - 1 <= 0 ? 0 : upperLayerItemIndex - 1
-			allLayers.splice(insertIndex, 0, layerItem)
-			this.cacheLayers = new Set(allLayers)
+			allViewLayers.splice(insertIndex, 0, layerItem)
+			this.viewLayers = new Set(allViewLayers)
 			return
 		}
 		const groupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {

@@ -40,8 +40,8 @@ export class WebCanvas {
 		return layerControl.getAllLayers(groupId)
 	}
 
-	public getAllViewLayers(): Array<TLayerModel> {
-		return layerControl.getAllViewLayers()
+	public getAllViewLayers(groupId?: string): Array<TLayerModel> {
+		return layerControl.getAllViewLayers(groupId)
 	}
 
 	public deleteLayerItem(layerId: string): void {

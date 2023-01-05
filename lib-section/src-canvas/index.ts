@@ -36,6 +36,8 @@ window.addEventListener('DOMContentLoaded', (): void => {
 
 	// webCanvas.deleteLayerItem(groupLayerA.layerId)
 	webCanvas.moveLayerItem(groupLayerB.layerId, groupLayerB.groupId, layerB.layerId)
+	webCanvas.moveLayerItem(layerD.layerId, groupLayerA.layerId)
+	webCanvas.moveLayerItem(groupLayerB.layerId, undefined, layerA.layerId)
 
 	console.log(webCanvas.getAllLayers())
 	console.log(webCanvas.getAllViewLayers())
