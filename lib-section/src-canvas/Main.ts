@@ -48,7 +48,7 @@ export class WebCanvas {
 		layerControl.deleteLayerItem(layerId)
 	}
 
-	public moveLayerItem(layerId: string, groupLayerId?: string, upperLayerId?: string): void {
-		layerControl.moveLayerItem(layerId, groupLayerId, upperLayerId)
+	public moveLayerItem(layerId: string, toGroupLayerId?: string, upperLayerId?: string): void {
+		layerControl.moveLayerItem(layerId, toGroupLayerId, upperLayerId)
 	}
 }

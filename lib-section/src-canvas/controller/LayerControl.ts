@@ -36,6 +36,14 @@ export class LayerControl {
 		return arrCacheLayers
 	}
 
+	public getLayerItem(layerId: string): TLayerModel {
+		const allLayers: Array<TLayerModel> = this.getAllLayers()
+		const layerItem: TLayerModel = allLayers.find((item: TLayerModel): boolean => {
+			return item.layerId === layerId
+		}) as TLayerModel
+		return layerItem
+	}
+
 	public getAllViewLayers(groupId?: string): Array<TLayerModel> {
 		const arrCacheLayers: Array<TLayerModel> = Array.from(this.cacheLayers)
 		if (groupId) {
@@ -61,11 +69,24 @@ export class LayerControl {
 		return newGroupLayer
 	}
 
+	public modifyLayerName(layerId: string, layerName: string): void {
+		const layerItem: TLayerModel = this.getLayerItem(layerId)
+		if (!layerItem || !layerName.trim()) {
+			return
+		}
+		layerItem.element.layerName = layerName
+	}
+
+	public modifyLayerOpacity(layerId: string, layerOpacity: number): void {
+		const layerItem: TLayerModel = this.getLayerItem(layerId)
+		if (!layerItem || layerOpacity < 0 || layerOpacity > 1) {
+			return
+		}
+		layerItem.element.layerOpacity = layerOpacity
+	}
+
 	public deleteLayerItem(layerId: string): void {
-		const allLayers: Array<TLayerModel> = this.getAllLayers()
-		const layerItem: TLayerModel = allLayers.find((item: TLayerModel): boolean => {
-			return item.layerId === layerId
-		}) as TLayerModel
+		const layerItem: TLayerModel = this.getLayerItem(layerId)
 		const fromGroupLayerId: string = layerItem.groupId as string
 		if (!fromGroupLayerId) {
 			if (layerItem instanceof GroupLayerModel) {
@@ -80,7 +101,7 @@ export class LayerControl {
 			this.viewLayers.delete(layerItem)
 			return
 		}
-		const groupLayerItem: GroupLayerModel = allLayers.find((item: TLayerModel): boolean => {
+		const groupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
 			return item.layerId === fromGroupLayerId
 		}) as GroupLayerModel
 		if (layerItem instanceof GroupLayerModel) {
@@ -95,14 +116,12 @@ export class LayerControl {
 		this.cacheLayers.delete(layerItem)
 	}
 
-	public moveLayerItem(layerId: string, groupLayerId?: string, upperLayerId?: string): void {
-		const layerItem: LayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
-			return item.layerId === layerId
-		}) as LayerModel
+	public moveLayerItem(layerId: string, toGroupLayerId?: string, upperLayerId?: string): void {
+		const layerItem: TLayerModel = this.getLayerItem(layerId)
 		const fromGroupLayerId: string = layerItem.groupId as string
 		if (!fromGroupLayerId) {
 			this.viewLayers.delete(layerItem)
-			if (!groupLayerId) {
+			if (!toGroupLayerId) {
 				layerItem.groupId = undefined
 				if (!upperLayerId) {
 					this.viewLayers.add(layerItem)
@@ -118,7 +137,7 @@ export class LayerControl {
 				return
 			}
 			const groupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
-				return item.layerId === groupLayerId
+				return item.layerId === toGroupLayerId
 			}) as GroupLayerModel
 			layerItem.groupId = groupLayerItem.layerId
 			if (!upperLayerId) {
@@ -138,7 +157,7 @@ export class LayerControl {
 			return item.layerId === fromGroupLayerId
 		}) as GroupLayerModel
 		oldGroupLayerItem.childLayers.delete(layerItem)
-		if (!groupLayerId) {
+		if (!toGroupLayerId) {
 			layerItem.groupId = undefined
 			if (!upperLayerId) {
 				this.viewLayers.add(layerItem)
@@ -154,7 +173,7 @@ export class LayerControl {
 			return
 		}
 		const groupLayerItem: GroupLayerModel = this.getAllLayers().find((item: TLayerModel): boolean => {
-			return item.layerId === groupLayerId
+			return item.layerId === toGroupLayerId
 		}) as GroupLayerModel
 		layerItem.groupId = groupLayerItem.layerId
 		if (!upperLayerId) {
