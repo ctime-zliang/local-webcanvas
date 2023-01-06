@@ -1,9 +1,11 @@
 export class Layer {
 	private _layerName: string
 	private _layerOpacity: number
+	private _isVisible: boolean
 	constructor(layerName: string) {
 		this._layerName = layerName
 		this._layerOpacity = 1
+		this._isVisible = true
 	}
 
 	public get layerName(): string {
@@ -18,5 +20,12 @@ export class Layer {
 	}
 	public set layerOpacity(value: number) {
 		this._layerOpacity = value
+	}
+
+	public get isVisible(): boolean {
+		return this._isVisible
+	}
+	public set isVisible(value: boolean) {
+		this._isVisible = value
 	}
 }

@@ -85,6 +85,14 @@ export class LayerControl {
 		layerItem.element.layerOpacity = layerOpacity
 	}
 
+	public modifyLayerVisible(layerId: string, isVisible: boolean): void {
+		const layerItem: TLayerModel = this.getLayerItem(layerId)
+		if (!layerItem) {
+			return
+		}
+		layerItem.element.isVisible = !!isVisible
+	}
+
 	public deleteLayerItem(layerId: string): void {
 		const layerItem: TLayerModel = this.getLayerItem(layerId)
 		const fromGroupLayerId: string = layerItem.groupId as string
