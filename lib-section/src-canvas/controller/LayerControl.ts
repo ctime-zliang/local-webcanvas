@@ -1,7 +1,8 @@
-import { globalIdenManager } from '../Constant'
+import { eventBus, globalIdenManager } from '../Constant'
 import { GroupLayerModel } from '../models/GroupLayerModel'
 import { LayerModel } from '../models/LayerModel'
 import { TLayerModel } from '../types/layer'
+import { Scene } from '../views/Scene'
 
 export class LayerControl {
 	private _cacheLayers: Set<TLayerModel>
@@ -195,5 +196,9 @@ export class LayerControl {
 		const insertIndex: number = upperLayerItemIndex - 1 <= 0 ? 0 : upperLayerItemIndex - 1
 		allChildLayers.splice(insertIndex, 0, layerItem)
 		groupLayerItem.childLayers = new Set(allChildLayers)
+	}
+
+	public render(scene: Scene): void {
+		eventBus.emit('renderFrame')
 	}
 }

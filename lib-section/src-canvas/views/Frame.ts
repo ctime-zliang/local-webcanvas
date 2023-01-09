@@ -1,3 +1,4 @@
+import { eventBus } from '../Constant'
 import { Scene } from './Scene'
 
 export class Frame extends Scene {
@@ -12,6 +13,13 @@ export class Frame extends Scene {
 		this._canvasFrameId = ''
 		this._isActive = true
 		this.initScene(this._canvasElement.getContext('2d') as CanvasRenderingContext2D)
+		window.requestAnimationFrame(this.renderFrame.bind(this))
+	}
+
+	public init(): void {
+		eventBus.on('renderFrame', (): void => {
+			this.updateFrame = true
+		})
 	}
 
 	public get canvasElement(): HTMLCanvasElement {
@@ -44,5 +52,6 @@ export class Frame extends Scene {
 			this.updateFrame = false
 			this.render()
 		}
+		window.requestAnimationFrame(this.renderFrame.bind(this))
 	}
 }
