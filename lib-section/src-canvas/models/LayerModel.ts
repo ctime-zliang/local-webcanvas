@@ -1,13 +1,16 @@
 import { Layer } from '../shapes/Layer'
+import { TGeometryShapeMode } from '../types/shapes'
 
 export class LayerModel {
 	private _groupId: string | undefined
 	private _layerId: string
 	private _element: Layer
+	private _payloads: Array<TGeometryShapeMode>
 	constructor(layerId: string, layerName: string) {
 		this._groupId = undefined as any
 		this._layerId = layerId
 		this._element = new Layer(layerName)
+		this._payloads = []
 	}
 
 	public get groupId(): string | undefined {
@@ -26,5 +29,12 @@ export class LayerModel {
 
 	public get element(): Layer {
 		return this._element
+	}
+
+	public get payloads(): Array<TGeometryShapeMode> {
+		return this._payloads
+	}
+	public set payloads(value: Array<TGeometryShapeMode>) {
+		this._payloads = value
 	}
 }
